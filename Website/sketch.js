@@ -30,7 +30,7 @@ var gridId=[2,2];
 let amt;
 
 let col, prevcolor, newcolor;
-let accposy=0, accposz=0;
+let accposy=0, accposz=0, accposx=0;
 
 function setup() {
   createCanvas(windowWidth, windowHeight, WEBGL);
@@ -94,10 +94,11 @@ if (newcolor.levels[0]!=col.levels[0]||newcolor.levels[1]!=col.levels[1]||newcol
   pointLight(lerpColor(prevcolor, col, smoothstep(0.1,0.7,amt)), 0, 0, 600);
   if (checkaccel>=25){
       accposy=accelerationY;
-      accposz=accelerationZ;
+      accposx=accelerationX;
       checkaccel=0;
   }
-  pointLight(lerpColor(prevcolor, col, smoothstep(0.1,0.7,amt)), accposy*200, accposz*200, 600);
+  //pointLight(lerpColor(prevcolor, col, smoothstep(0.1,0.7,amt)), accposy*200, accposz*200, 600);
+  pointLight(lerpColor(prevcolor, col, smoothstep(0.1,0.7,amt)), accposx*10, accposy*10, 510);
   specularMaterial(250);
   shininess(5);
   sphere(500);
